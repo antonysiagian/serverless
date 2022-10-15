@@ -2,10 +2,11 @@ name: Sample Github Action Workflow
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 env:
-  ENVIRONMENT_NAME: ${{ secrets.Staging.ENVIRONMENT_NAME }}
+  ENVIRONMENT_NAME: ${{ secrets.ENVIRONMENT_NAME }}
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "The environment is ${{ env.ENVIRONMENT_NAME }} event."
+      - run: echo "The environment is ${{ secrets.ENVIRONMENT_NAME }} event."
