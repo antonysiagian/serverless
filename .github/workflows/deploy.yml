@@ -2,7 +2,7 @@ name: Sample Github Action Workflow
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 env:
-  ENVIRONMENT_NAME: ${{ secret.ENVIRONMENT_NAME }}
+  ENVIRONMENT_NAME: ${{ secrets.ENVIRONMENT_NAME }}
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
