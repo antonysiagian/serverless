@@ -10,7 +10,13 @@ jobs:
       name: Dev
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "The environment is ${{ env.ENVIRONMENT_NAME }} event."
+      - run: ${{ env.ENVIRONMENT_NAME }} >> dev.txt
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dev-artifact
+          path: |
+            dev.txt
   Explore-GitHub-Actions-Staging:
     runs-on: ubuntu-latest
     env:
@@ -19,4 +25,10 @@ jobs:
       name: Staging
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "The environment is ${{ env.ENVIRONMENT_NAME }} event."
+      - run: ${{ env.ENVIRONMENT_NAME }} >> staging.txt
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: staging-artifact
+          path: |
+            staging.txt
