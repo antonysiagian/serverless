@@ -4,15 +4,19 @@ on: [push]
 jobs:
   Explore-GitHub-Actions-Dev:
     runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT_NAME: ${{secrets.ENVIRONMENT_NAME}}
     environment:
       name: Dev
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "The environment is ${{ secrets.ENVIRONMENT_NAME }} event."
+      - run: echo "The environment is ${{ env.ENVIRONMENT_NAME }} event."
   Explore-GitHub-Actions-Staging:
     runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT_NAME: ${{secrets.ENVIRONMENT_NAME}}
     environment:
       name: Staging
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "The environment is ${{ secrets.ENVIRONMENT_NAME }} event."
+      - run: echo "The environment is ${{ env.ENVIRONMENT_NAME }} event."
