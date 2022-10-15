@@ -1,4 +1,4 @@
-name: Sample Test actopm
+name: Sample Github Action Workflow
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
