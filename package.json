@@ -1,0 +1,28 @@
+{
+  "name": "serverless",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/antonysiagian/serverless.git",
+  "author": "antonysiagian <antonysiagian@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec serverless offline",
+    "start-db": "serverless dynamodb start --migrate"
+  },
+  "dependencies": {
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1238.0",
+    "serverless": "^3.23.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.4",
+    "nodemon": "^2.0.20",
+    "plugin": "^0.3.3",
+    "serverless-dotenv-plugin": "^4.0.2",
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^11.1.3",
+    "serverless-plugin-typescript": "^2.1.4",
+    "typescript": "^4.8.4"
+  }
+}
