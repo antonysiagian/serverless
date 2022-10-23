@@ -12,10 +12,19 @@ custom:
   dynamodb:
     stages:
       - dev
+    start:
+      migrate: true
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      seed: true
+      convertEmptyValues: true
+
   serverless-offline:
     httpPort: 3000
     lambdaPort: 3003
-    noPrependStageInUrl: dev
+    noPrependStageInUrl: ${self.stage}
 
 resources:
   Resources:
@@ -78,5 +87,5 @@ functions:
     handler: src/lambda/table/read.handler
     events:
       - http:
-          path: /api/table
+          path: /api/table/{id}
           method: get

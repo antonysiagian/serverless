@@ -1,10 +1,16 @@
 
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
-import uuid from 'uuid'
 
 export const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
-    const dynamoDb = new DocumentClient();
+    
+    const dynamoDb = new DocumentClient({
+        region: 'localhost',
+        endpoint: 'http://localhost:8000',
+        accessKeyId: 'DEFAULT_ACCESS_KEY',  // needed if you don't have aws credentials at all in env
+        secretAccessKey: 'DEFAULT_SECRET' // needed if you don't have aws credentials at all in env
+    });
+
     try {
         const timestamp = new Date().getTime();
         console.log(1)
@@ -35,7 +41,7 @@ export const handler = async (event: APIGatewayEvent, context: Context): Promise
 
         const response = {
             statusCode: 200,
-            body: JSON.stringify(params.Item),
+            body: JSON.stringify(params.Item)
         };
 
         return response
